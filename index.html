@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>人材定着・育成の3分診断 | 社長の悩みを整理する</title>
+    <meta name="description" content="採用しても辞めてしまう。その悩みを3分で整理。責めない、決めつけない無料診断。">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            text: '#1F2937',   // Main Text (Dark Gray)
+                            pink: '#FF2E63',   // Image-like Pink
+                            orange: '#FF8000', // Image-like Orange
+                            purple: '#7A2E99', // Image-like Purple
+                            lightBg: '#FAFAFA', // Very light gray background
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Noto Sans JP"', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'gradient-main': 'linear-gradient(135deg, #FF2E63 0%, #FF8000 100%)',
+                        'gradient-text': 'linear-gradient(90deg, #7A2E99 0%, #FF2E63 50%, #FF8000 100%)',
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'bg-pan': 'bgPan 8s linear infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        bgPan: {
+                            '0%': { backgroundPosition: '0% 50%' },
+                            '100%': { backgroundPosition: '100% 50%' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            color: #1F2937;
+            background-color: #FAFAFA;
+            overflow-x: hidden;
+        }
+
+        /* Gradient Text Utility */
+        .text-gradient {
+            background: linear-gradient(90deg, #7A2E99, #FF2E63, #FF8000);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 200% auto;
+            animation: bgPan 5s linear infinite;
+        }
+
+        /* Background Watermark Text */
+        .watermark {
+            position: absolute;
+            font-size: 15vw;
+            font-weight: 900;
+            color: rgba(0, 0, 0, 0.02);
+            white-space: nowrap;
+            z-index: 0;
+            pointer-events: none;
+            line-height: 1;
+            user-select: none;
+        }
+
+        /* Smooth Scroll */
+        html { scroll-behavior: smooth; }
+        .pb-safe { padding-bottom: env(safe-area-inset-bottom); }
+
+        /* Card Hover Effect */
+        .hover-card {
+            transition: all 0.3s ease;
+        }
+        .hover-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px -5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-pink-100 selection:text-brand-pink">
+
+    <!-- Header -->
+    <header class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 transition-all duration-300">
+        <div class="max-w-6xl mx-auto px-4 h-20 flex items-center justify-between">
+            <div class="font-black text-xl tracking-tight flex items-center gap-2">
+                <div class="w-8 h-8 rounded-lg bg-gradient-main flex items-center justify-center text-white">
+                    <i class="fa-solid fa-bolt"></i>
+                </div>
+                <span>人材定着診断</span>
+            </div>
+            <nav class="hidden md:flex gap-8 text-sm font-bold text-gray-500">
+                <a href="#why" class="hover:text-brand-pink transition-colors">Why?</a>
+                <a href="#solution" class="hover:text-brand-pink transition-colors">Result</a>
+                <a href="#merit" class="hover:text-brand-pink transition-colors">Merit</a>
+            </nav>
+            <div class="hidden md:flex gap-3">
+                <a href="https://spc-jp.github.io/jinzai-shindan-apl/" target="_blank" rel="noopener noreferrer" class="px-6 py-2.5 text-sm font-bold text-white bg-black rounded-full hover:bg-gray-800 transition-all shadow-lg hover:-translate-y-0.5">
+                    今すぐ診断
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 px-4 overflow-hidden">
+        <!-- Background Decor -->
+        <div class="watermark top-20 left-1/2 -translate-x-1/2">DIAGNOSIS</div>
+        
+        <div class="max-w-4xl mx-auto relative z-10 text-center">
+            
+            <!-- Tag -->
+            <div class="inline-block px-4 py-1.5 mb-8 text-xs font-bold tracking-widest text-brand-pink uppercase bg-pink-50 rounded-full border border-pink-100 shadow-sm animate-float">
+                For SME Leaders
+            </div>
+
+            <!-- Main Copy -->
+            <h1 class="text-4xl sm:text-5xl lg:text-7xl font-black leading-tight mb-8">
+                採用しても、<br>
+                <span class="text-gradient">人が育たない。</span>
+            </h1>
+
+            <p class="text-lg sm:text-xl text-gray-500 font-medium mb-12 leading-relaxed max-w-2xl mx-auto">
+                2〜3年で辞めてしまうその悩み、社長ひとりで抱えていませんか？<br>
+                責めない、決めつけない。<br>
+                <span class="text-brand-text font-bold">3分診断</span>で、いまの状態を整理して次の一手を。
+            </p>
+
+            <!-- CTA Buttons -->
+            <div class="flex flex-col sm:flex-row gap-5 justify-center items-center mb-8">
+                <a href="https://spc-jp.github.io/jinzai-shindan-apl/" target="_blank" rel="noopener noreferrer" class="group relative px-12 py-5 text-lg font-bold text-white transition-all duration-200 bg-gradient-main rounded-full shadow-xl hover:shadow-2xl hover:scale-105 w-full sm:w-auto overflow-hidden">
+                    <div class="absolute inset-0 bg-white/20 group-hover:translate-x-full transition-transform duration-500 skew-x-12 -translate-x-full"></div>
+                    <span class="relative flex items-center justify-center gap-3">
+                        3分で現状を整理する <i class="fa-solid fa-arrow-right"></i>
+                    </span>
+                </a>
+            </div>
+            
+            <p class="text-xs text-gray-400 font-medium">
+                ※ 診断は無料です。結果はそのまま面談の議題として使えます。
+            </p>
+        </div>
+    </section>
+
+    <!-- Impact Comparison Table Section (Why) -->
+    <section id="why" class="py-24 bg-white relative">
+        <div class="watermark top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">REALITY</div>
+
+        <div class="max-w-5xl mx-auto px-4 relative z-10">
+            <div class="text-center mb-16">
+                <div class="inline-block px-4 py-1 mb-4 text-xs font-bold tracking-wider text-white bg-brand-orange rounded-full">
+                    QUESTION
+                </div>
+                <h2 class="text-3xl sm:text-5xl font-black text-brand-text mb-6">
+                    「人の問題」<br>
+                    <span class="text-brand-pink">誤解していませんか？</span>
+                </h2>
+                <p class="text-gray-500 font-medium">
+                    実は、社長の能力の問題ではありません。<span class="border-b-2 border-brand-orange text-brand-text">仕組みがないだけ</span>です。
+                </p>
+            </div>
+
+            <!-- Impactful Comparison Grid (The "Table") -->
+            <div class="grid md:grid-cols-2 gap-0 shadow-2xl rounded-3xl overflow-hidden bg-white">
+                
+                <!-- Left: Misunderstanding -->
+                <div class="p-10 md:p-14 bg-gray-50 border-r border-gray-100 flex flex-col justify-center text-center md:text-left relative group">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gray-200"></div>
+                    <div class="mb-6 inline-flex items-center justify-center md:justify-start gap-3">
+                        <i class="fa-solid fa-xmark text-4xl text-gray-300 group-hover:text-red-400 transition-colors"></i>
+                        <h3 class="text-2xl font-bold text-gray-400 group-hover:text-gray-600 transition-colors">よくある誤解</h3>
+                    </div>
+                    <ul class="space-y-6">
+                        <li class="flex items-center gap-4 text-lg text-gray-500 font-medium opacity-70 group-hover:opacity-100 transition-opacity">
+                            <span class="w-8 h-8 rounded-full bg-gray-200 text-gray-500 flex items-center justify-center text-sm font-bold flex-shrink-0">1</span>
+                            もっと求人を出そう
+                        </li>
+                        <li class="flex items-center gap-4 text-lg text-gray-500 font-medium opacity-70 group-hover:opacity-100 transition-opacity">
+                            <span class="w-8 h-8 rounded-full bg-gray-200 text-gray-500 flex items-center justify-center text-sm font-bold flex-shrink-0">2</span>
+                            給与条件を上げよう
+                        </li>
+                        <li class="flex items-center gap-4 text-lg text-gray-500 font-medium opacity-70 group-hover:opacity-100 transition-opacity">
+                            <span class="w-8 h-8 rounded-full bg-gray-200 text-gray-500 flex items-center justify-center text-sm font-bold flex-shrink-0">3</span>
+                            「いい人」が来れば変わるはず
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Right: Reality (Highlighted) -->
+                <div class="p-10 md:p-14 bg-brand-text text-white relative overflow-hidden flex flex-col justify-center text-center md:text-left">
+                    <div class="absolute inset-0 bg-gradient-main opacity-10"></div>
+                    <!-- Decorative Circle -->
+                    <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-brand-pink rounded-full filter blur-3xl opacity-20"></div>
+
+                    <div class="absolute top-0 left-0 w-full h-2 bg-gradient-main"></div>
+                    
+                    <div class="mb-6 inline-flex items-center justify-center md:justify-start gap-3 relative z-10">
+                        <i class="fa-solid fa-circle-exclamation text-4xl text-brand-orange animate-pulse"></i>
+                        <h3 class="text-2xl font-bold text-white">現実に起きること</h3>
+                    </div>
+                    <ul class="space-y-6 relative z-10">
+                        <li class="flex items-center gap-4 text-xl font-bold">
+                            <span class="w-8 h-8 rounded-full bg-brand-orange text-white flex items-center justify-center text-sm font-bold flex-shrink-0 shadow-lg">!</span>
+                            採用できても、同じように辞めていく
+                        </li>
+                        <li class="flex items-center gap-4 text-xl font-bold">
+                            <span class="w-8 h-8 rounded-full bg-brand-orange text-white flex items-center justify-center text-sm font-bold flex-shrink-0 shadow-lg">!</span>
+                            教える人が疲れて、現場が回らない
+                        </li>
+                        <li class="flex items-center gap-4 text-xl font-bold">
+                            <span class="w-8 h-8 rounded-full bg-brand-orange text-white flex items-center justify-center text-sm font-bold flex-shrink-0 shadow-lg">!</span>
+                            次の打ち手が遅れる
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <p class="text-center mt-12 text-gray-500 font-bold">
+                特に<span class="text-brand-pink underline decoration-4 underline-offset-4">最初の3ヶ月</span>。ここが設計されていない会社ほど定着しません。
+            </p>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section id="solution" class="py-24 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Text Content -->
+                <div class="lg:col-span-5">
+                    <div class="inline-block px-3 py-1 mb-6 text-xs font-bold tracking-wider text-brand-purple bg-purple-50 rounded-full">
+                        SOLUTION
+                    </div>
+                    <h2 class="text-4xl font-black text-brand-text mb-6">
+                        3分診断で、<br>
+                        <span class="text-gradient">霧が晴れる。</span>
+                    </h2>
+                    <p class="text-lg text-gray-500 mb-8 leading-relaxed">
+                        簡単な質問に答えるだけで、あなたの会社がどのタイプかが見えてきます。
+                        <span class="block mt-4 font-bold text-gray-800">
+                            ・採用ズレ型<br>
+                            ・受け入れ不足型<br>
+                            ・育成空洞型
+                        </span>
+                    </p>
+                    <a href="https://spc-jp.github.io/jinzai-shindan-apl/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-brand-pink font-bold text-lg hover:underline group">
+                        診断のサンプルを見る <i class="fa-solid fa-chevron-right ml-2 text-sm group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+
+                <!-- Features Grid -->
+                <div class="lg:col-span-7 grid sm:grid-cols-2 gap-4">
+                    <!-- Feature 1 -->
+                    <div class="bg-white p-8 rounded-3xl shadow-sm hover-card border border-gray-100">
+                        <div class="w-12 h-12 rounded-2xl bg-pink-100 text-brand-pink flex items-center justify-center text-xl mb-4">
+                            <i class="fa-solid fa-lightbulb"></i>
+                        </div>
+                        <h4 class="font-bold text-xl mb-2">今日からやる一手</h4>
+                        <p class="text-sm text-gray-500">明日から現場で実践できる具体的なアクション。</p>
+                    </div>
+                    <!-- Feature 2 -->
+                    <div class="bg-white p-8 rounded-3xl shadow-sm hover-card border border-gray-100">
+                        <div class="w-12 h-12 rounded-2xl bg-orange-100 text-brand-orange flex items-center justify-center text-xl mb-4">
+                            <i class="fa-solid fa-gears"></i>
+                        </div>
+                        <h4 class="font-bold text-xl mb-2">仕組みにする一手</h4>
+                        <p class="text-sm text-gray-500">属人化を防ぎ、組織として定着させる方法。</p>
+                    </div>
+                    <!-- Feature 3 -->
+                    <div class="bg-white p-8 rounded-3xl shadow-sm hover-card border border-gray-100">
+                        <div class="w-12 h-12 rounded-2xl bg-purple-100 text-brand-purple flex items-center justify-center text-xl mb-4">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+                        <h4 class="font-bold text-xl mb-2">失敗回避の守り</h4>
+                        <p class="text-sm text-gray-500">多くの企業が陥る「やってはいけない」パターン。</p>
+                    </div>
+                    <!-- Feature 4 -->
+                    <div class="bg-gradient-main p-8 rounded-3xl shadow-lg hover-card text-white flex flex-col justify-center items-center text-center">
+                        <i class="fa-regular fa-file-lines text-3xl mb-3"></i>
+                        <h4 class="font-bold text-lg">面談用レポート</h4>
+                        <p class="text-xs opacity-90 mt-1">結果は自動生成。<br>そのまま議論の場へ。</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Merit Section -->
+    <section id="merit" class="py-24 bg-white relative overflow-hidden">
+        <div class="watermark bottom-0 right-0 translate-y-1/3 text-gray-50">MERIT</div>
+        
+        <div class="max-w-4xl mx-auto px-4 relative z-10 text-center">
+            <h2 class="text-3xl sm:text-4xl font-black text-brand-text mb-12 leading-tight">
+                診断で、商談は
+                <span class="inline-block bg-brand-text text-white px-3 py-1 mx-1 transform -rotate-1 shadow-md">「設計の会話」</span>
+                に変わる。
+            </h2>
+
+            <div class="flex flex-col md:flex-row gap-8 justify-center">
+                <!-- Box 1 -->
+                <div class="flex-1 bg-white border-2 border-gray-100 rounded-3xl p-8 hover:border-brand-pink transition-colors group text-left">
+                    <h4 class="text-gray-400 font-black text-sm tracking-widest uppercase mb-4 group-hover:text-brand-pink">FOR PRESIDENT</h4>
+                    <h3 class="text-2xl font-bold mb-6">社長がラクになる</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-center gap-3 font-bold text-gray-600">
+                            <i class="fa-solid fa-check text-brand-pink"></i> 責められない
+                        </li>
+                        <li class="flex items-center gap-3 font-bold text-gray-600">
+                            <i class="fa-solid fa-check text-brand-pink"></i> 状況を言語化できる
+                        </li>
+                        <li class="flex items-center gap-3 font-bold text-gray-600">
+                            <i class="fa-solid fa-check text-brand-pink"></i> 次の一手が軽くなる
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Box 2 -->
+                <div class="flex-1 bg-white border-2 border-gray-100 rounded-3xl p-8 hover:border-brand-orange transition-colors group text-left">
+                    <h4 class="text-gray-400 font-black text-sm tracking-widest uppercase mb-4 group-hover:text-brand-orange">FOR TEAM</h4>
+                    <h3 class="text-2xl font-bold mb-6">現場が動き出す</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-center gap-3 font-bold text-gray-600">
+                            <i class="fa-solid fa-check text-brand-orange"></i> 小さく具体的
+                        </li>
+                        <li class="flex items-center gap-3 font-bold text-gray-600">
+                            <i class="fa-solid fa-check text-brand-orange"></i> 完璧を狙わない
+                        </li>
+                        <li class="flex items-center gap-3 font-bold text-gray-600">
+                            <i class="fa-solid fa-check text-brand-orange"></i> 仕組みに近づく
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Area / Final CTA -->
+    <footer class="relative py-24 bg-white overflow-hidden">
+        <!-- Background Gradient Circle -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-radial from-pink-50 to-transparent rounded-full opacity-50 z-0 pointer-events-none"></div>
+
+        <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+            <h2 class="text-4xl sm:text-6xl font-black text-brand-text mb-6">
+                考えるを、<br>
+                <span class="text-gradient">ひとりにしない。</span>
+            </h2>
+            <p class="text-gray-500 text-lg mb-12">
+                人材の悩みは、ひとりで抱えるほど重くなります。<br>
+                まずは3分。現状を整理して、一緒に次の一手を描きましょう。
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-5 justify-center items-center">
+                <a href="https://spc-jp.github.io/jinzai-shindan-apl/" target="_blank" rel="noopener noreferrer" class="px-12 py-5 text-xl font-bold text-white transition-all duration-200 bg-brand-text rounded-full shadow-2xl hover:scale-105 w-full sm:w-auto">
+                    診断スタート (無料)
+                </a>
+            </div>
+            
+            <div class="mt-20 text-xs text-gray-400 font-medium">
+                &copy; Recruitment Support Diagnosis. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Fixed Bottom CTA -->
+    <div class="fixed bottom-0 left-0 w-full bg-white/90 backdrop-blur border-t border-gray-100 p-4 pb-safe shadow-[0_-5px_15px_rgba(0,0,0,0.05)] md:hidden z-50 flex gap-3">
+        <a href="https://spc-jp.github.io/jinzai-shindan-apl/" target="_blank" rel="noopener noreferrer" class="flex-1 bg-gradient-main text-white font-bold py-3 px-4 rounded-full text-center text-sm shadow-lg flex items-center justify-center">
+            3分診断をスタート
+        </a>
+    </div>
+
+</body>
+</html>
